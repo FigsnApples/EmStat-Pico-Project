@@ -1,0 +1,38 @@
+                  "e\n"
+                  "var c\n"
+                  "var p\n"
+                  "var b\n"////////////////////////////////
+                  //enable bipot on ch 1 
+                  "set_pgstat_chan 1\n" 
+                  //set the selected channel to bipot mode 
+                  "set_pgstat_mode 5\n" 
+                  //set bp mode to offset or constant 
+                  "set_poly_we_mode 1\n"
+                  //set offset or constant voltage 
+                  //The mode of the additional working electrode: 
+                  //0 = fixed mode (Additional WE is kept fixed at the specified potential) 
+                  //1 = offset mode (Additional WE will follow the main WE at a specified offset potential)
+                  "set_e 0m\n" ////////////////////could change
+                  //set the current-range of the secondary WE 
+                  "set_range ba 590u\n"
+
+                  /////////////"set_pgstat_chan 1\n"
+                  /////////////"set_pgstat_mode 0\n"
+                  "set_pgstat_chan 0\n"
+                  "set_pgstat_mode 2\n" //low speed mode?
+                  "set_max_bandwidth 20\n"
+                  "set_range_minmax da -400m 400m\n"
+                  "set_range ba 590u\n"
+                  "set_autoranging ba 59n 590u\n"
+                  "set_e -400m\n"
+                  "cell_on\n"
+                  "meas_loop_cv p c -400m -400m 400m 10m 50m poly_we(1 b) nscans(3)\n" ///////////////
+                  "pck_start\n"
+                  "pck_add p\n"     
+                  "pck_add c\n"
+                  "pck_add b\n"////////////////////////////////////
+                  "pck_end\n"
+                  "endloop\n"
+                  "on_finished:\n" 
+                  "cell_off\n"
+                  "\n";
